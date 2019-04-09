@@ -1,6 +1,6 @@
 ## Restaurant Reviews Project
 
-In this project, we have converted a static webpage to a mobile-ready web application, improved the accessibility and updated the pages to work properly in all display's size. After that, we added a service worker to begin the process of creating a seamless offline experience for the users.
+In this project, we have converted a static webpage to a mobile-ready web application, improved the accessibility and updated the pages to work properly in all displays' size. After that, we added a service worker to begin the process of creating a seamless offline experience for the users.
 
 ## How to run
 
