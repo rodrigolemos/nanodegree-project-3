@@ -26,30 +26,14 @@ initMap = () => {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-          'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          'Imagery Â© <a href="https://www.mapbox.com/">Mapbox</a>',
         id: 'mapbox.streets'    
       }).addTo(newMap);
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
     }
   });
-}  
- 
-/* window.initMap = () => {
-  fetchRestaurantFromURL((error, restaurant) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      self.map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: restaurant.latlng,
-        scrollwheel: false
-      });
-      fillBreadcrumb();
-      DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
-    }
-  });
-} */
+}
 
 /**
  * Get current restaurant from page URL.
@@ -81,18 +65,24 @@ fetchRestaurantFromURL = (callback) => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
+
+  // Accessibility attributes
   name.setAttribute('role', 'heading');
   name.setAttribute('aria-label', restaurant.name);
   name.setAttribute('tabindex', '0');
   name.innerHTML = restaurant.name;
 
   const address = document.getElementById('restaurant-address');
+
+  // Accessibility attributes
   address.setAttribute('tabindex', '0');
   address.setAttribute('aria-label', 'Address: ' + restaurant.address);
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img';
+
+  // Accessibility attributes
   image.setAttribute('role', 'img');
   image.setAttribute('tabindex', '0');
   image.setAttribute('alt', 'Photo of the restaurant ' + restaurant.name);
@@ -127,6 +117,8 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     row.appendChild(time);
 
     hours.appendChild(row);
+
+    // Accessibility attributes
     row.setAttribute('tabindex', '0');
     row.setAttribute('aria-label', 'Opened: ' + key + ' - ' + operatingHours[key]);
   }
@@ -147,6 +139,8 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   if (!reviews) {
     const noReviews = document.createElement('p');
     noReviews.innerHTML = 'No reviews yet!';
+
+    // Accessibility attributes
     noReviews.setAttribute('role', 'heading');
     noReviews.setAttribute('aria-label', 'No reviews yet');
     noReviews.setAttribute('tabindex', '0');
@@ -164,7 +158,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  * Create review HTML and add it to the webpage.
  */
 createReviewHTML = (review) => {
-  
+
   const divReview  = document.createElement('li');
   const rowHeader  = document.createElement('div');
   const colHeader  = document.createElement('div');
@@ -180,6 +174,8 @@ createReviewHTML = (review) => {
   colContent.classList.add('review-body');
 
   const name = document.createElement('span');
+
+  // Accessibility attributes
   name.setAttribute('role', 'heading');
   name.setAttribute('aria-label', review.name);
   name.setAttribute('tabindex', '0');
@@ -188,6 +184,8 @@ createReviewHTML = (review) => {
 
   const date = document.createElement('span');
   date.classList.add('review-date');
+
+  // Accessibility attributes
   date.setAttribute('role', 'heading');
   date.setAttribute('aria-label', review.date);
   date.setAttribute('tabindex', '0');
@@ -198,6 +196,8 @@ createReviewHTML = (review) => {
 
   const rating = document.createElement('span');
   rating.classList.add('review-rating');
+
+  // Accessibility attributes
   rating.setAttribute('role', 'heading');
   rating.setAttribute('aria-label', review.rating);
   rating.setAttribute('tabindex', '0');
@@ -205,6 +205,8 @@ createReviewHTML = (review) => {
   colContent.appendChild(rating);
 
   const comments = document.createElement('p');
+
+  // Accessibility attributes
   comments.setAttribute('aria-label', review.comments);
   comments.setAttribute('tabindex', '0');
   comments.innerHTML = review.comments;
